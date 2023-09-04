@@ -20,6 +20,13 @@ function Read() {
       });
   }
 
+  function setDataToStorage(id, name, age, email) {
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("age", age);
+    localStorage.setItem("email", email);
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -54,7 +61,21 @@ function Read() {
                       <td>{item.e_age}</td>
                       <td>{item.e_email}</td>
                       <td>
-                        <button className="btn btn-primary">Edit</button>
+                        <Link to="/edit">
+                          <button
+                            className="btn btn-primary"
+                            onClick={() =>
+                              setDataToStorage(
+                                item.id,
+                                item.e_name,
+                                item.e_age,
+                                item.e_email
+                              )
+                            }
+                          >
+                            Edit
+                          </button>
+                        </Link>
                       </td>
                       <td>
                         <button
