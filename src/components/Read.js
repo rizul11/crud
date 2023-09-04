@@ -12,6 +12,14 @@ function Read() {
       });
   }
 
+  function handleDelete(id) {
+    axios
+      .delete(`https://64f1bb350e1e60602d2432de.mockapi.io/crud/${id}`)
+      .then(() => {
+        getData();
+      });
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -21,8 +29,7 @@ function Read() {
       <div className="row">
         <div className="col-md-12">
           <div className="mb-2 mt-2">
-            <Link to='/create'>
-              
+            <Link to="/create">
               <button className="btn btn-primary">Create New Data</button>
             </Link>
           </div>
@@ -50,7 +57,16 @@ function Read() {
                         <button className="btn btn-primary">Edit</button>
                       </td>
                       <td>
-                        <button className="btn btn-danger">Delete</button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => {
+                            if (window.confirm("Are you sure to delete ?")) {
+                              handleDelete(item.id);
+                            }
+                          }}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   </>
