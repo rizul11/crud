@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 function Read() {
   const [apiData, setApiData] = useState([]);
 
@@ -20,6 +20,12 @@ function Read() {
     <>
       <div className="row">
         <div className="col-md-12">
+          <div className="mb-2 mt-2">
+            <Link to='/create'>
+              
+              <button className="btn btn-primary">Create New Data</button>
+            </Link>
+          </div>
           <table className="table table-bordered table-striped table-dark table-hover">
             <thead>
               <tr>
